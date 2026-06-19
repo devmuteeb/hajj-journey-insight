@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { formatDates } from "@/lib/dates";
+import { useFormattedDates } from "@/lib/dates";
 import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, Send } from "lucide-react";
 
 export function Footer() {
-  const { hijri, gregorian } = formatDates();
+  const { hijri, gregorian } = useFormattedDates();
   return (
     <footer className="bg-[#2D1F0E] text-cream/85 mt-0">
       <div className="border-b border-gold/20">
@@ -44,7 +44,7 @@ export function Footer() {
 
       <div className="border-t border-gold/20">
         <div className="mx-auto max-w-7xl px-5 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
-          <div className="text-cream/60">{hijri} • {gregorian}</div>
+          <div className="text-cream/60 min-h-[20px]">{hijri && <>{hijri} • {gregorian}</>}</div>
           <div className="font-display text-gold text-lg">Hajj at a Glance</div>
           <div className="flex gap-3 text-gold"><a href="#"><Facebook size={16}/></a><a href="#"><Twitter size={16}/></a><a href="#"><Instagram size={16}/></a></div>
         </div>

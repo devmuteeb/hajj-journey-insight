@@ -202,20 +202,22 @@ function Home() {
       </section>
 
       {/* ============ TIMELINE ============ */}
-      <section className="geo-pattern text-cream py-20">
-        <FadeUp className="text-center mb-14 px-5">
+      <section className="bg-off py-20 relative overflow-hidden">
+        <Star8 className="absolute top-10 left-10 text-gold/15" size={120} />
+        <Star8 className="absolute bottom-10 right-10 text-gold/15" size={120} />
+        <FadeUp className="text-center mb-14 px-5 relative">
           <div className="text-gold uppercase text-xs tracking-[0.4em]">5 Days · One Lifetime</div>
-          <h2 className="font-display text-5xl text-gold mt-2">The Hajj Journey</h2>
+          <h2 className="font-display text-5xl text-ink mt-2">The Hajj Journey</h2>
           <Divider2 />
         </FadeUp>
-        <div className="mx-auto max-w-6xl px-5">
+        <div className="mx-auto max-w-6xl px-5 relative">
           <div className="relative grid grid-cols-2 md:grid-cols-5 gap-6">
-            <div className="hidden md:block absolute top-7 left-[10%] right-[10%] h-px bg-gold/40" />
+            <div className="hidden md:block absolute top-7 left-[10%] right-[10%] h-px bg-gold/50" />
             {["Ihram","Mina","Arafat","Stoning","Farewell Tawaf"].map((t,i) => (
               <FadeUp key={t} delay={i*100} className="relative text-center">
-                <div className="mx-auto w-14 h-14 rounded-full bg-gold text-ink font-bold flex items-center justify-center font-display text-xl border-4 border-ink relative z-10">{i+1}</div>
-                <h4 className="font-display text-xl mt-3 text-gold">Day {i+1}</h4>
-                <p className="text-cream/85 text-sm">{t}</p>
+                <div className="mx-auto w-14 h-14 rounded-full bg-gold text-ink font-bold flex items-center justify-center font-display text-xl border-4 border-cream shadow-md relative z-10">{i+1}</div>
+                <h4 className="font-display text-xl mt-3 text-ink">Day {i+1}</h4>
+                <p className="text-deep text-sm">{t}</p>
               </FadeUp>
             ))}
           </div>

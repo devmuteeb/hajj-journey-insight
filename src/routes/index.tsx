@@ -4,9 +4,10 @@ import { FadeUp } from "@/components/FadeUp";
 import { WeatherCard } from "@/components/WeatherCard";
 import { CurrencyCard } from "@/components/CurrencyCard";
 import { Divider2, Star8, OrnamentBand, Corner } from "@/components/IslamicFrame";
+import { useHajjCountdown } from "@/lib/dates";
 import heroVideo from "@/assets/hero-bg.mp4.asset.json";
 import { POSTS } from "./blog";
-import { Users, MessageCircle, Video, BookOpen, GraduationCap, ArrowRight, HelpCircle, Compass, Calendar, ScrollText, Building2, Stethoscope, Bus } from "lucide-react";
+import { Users, MessageCircle, Video, BookOpen, GraduationCap, ArrowRight, HelpCircle, Compass, Calendar, ScrollText, Building2, Stethoscope, Bus, CalendarDays } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({

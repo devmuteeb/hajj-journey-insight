@@ -269,13 +269,12 @@ function Home() {
       </section>
 
       {/* ============ TRAVELLER TOOLS — clean two-column ============ */}
-      <section className="bg-ink text-cream py-20 relative">
-        <div className="absolute top-0 left-0 right-0 text-gold/40 h-5"><OrnamentBand className="w-full h-full" /></div>
+      <section className="paper-bg py-20 relative">
         <FadeUp className="text-center mb-12 px-5">
           <div className="text-gold uppercase text-xs tracking-[0.4em]">For the Pilgrim</div>
-          <h2 className="font-display text-5xl text-gold mt-2">Traveller Tools</h2>
+          <h2 className="font-display text-5xl text-ink mt-2">Traveller Tools</h2>
           <Divider2 />
-          <p className="text-cream/70 max-w-xl mx-auto">Live information to help you plan — built clean and lightweight, no third-party clutter.</p>
+          <p className="text-deep/80 max-w-xl mx-auto">Live information to help you plan — built clean and lightweight, no third-party clutter.</p>
         </FadeUp>
         <div className="mx-auto max-w-5xl px-5 grid md:grid-cols-2 gap-8">
           <FadeUp><WeatherCard /></FadeUp>
@@ -288,10 +287,10 @@ function Home() {
             { Icon: Stethoscope, title: "Medical Facilities", desc: "Hospitals and clinics serving pilgrims in the Haramain." },
             { Icon: Bus, title: "Holy Sites Transit", desc: "Trains and buses between Makkah, Mina, Arafat and Madinah." },
           ].map(c => (
-            <div key={c.title} className="bg-[#231809]/80 border border-gold/20 p-6 rounded">
+            <div key={c.title} className="bg-cream border border-gold/40 p-6 rounded shadow-sm hover:shadow-md transition-shadow">
               <c.Icon size={28} className="text-gold" />
-              <h3 className="font-display text-2xl mt-3 text-gold">{c.title}</h3>
-              <p className="text-cream/80 mt-2 text-sm">{c.desc}</p>
+              <h3 className="font-display text-2xl mt-3 text-ink">{c.title}</h3>
+              <p className="text-deep/85 mt-2 text-sm">{c.desc}</p>
               <button className="btn-gold-outline mt-4">View Directory</button>
             </div>
           ))}

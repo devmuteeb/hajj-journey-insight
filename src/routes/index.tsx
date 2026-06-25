@@ -4,9 +4,10 @@ import { FadeUp } from "@/components/FadeUp";
 import { WeatherCard } from "@/components/WeatherCard";
 import { CurrencyCard } from "@/components/CurrencyCard";
 import { Divider2, Star8, OrnamentBand, Corner } from "@/components/IslamicFrame";
+import { useHajjCountdown } from "@/lib/dates";
 import heroVideo from "@/assets/hero-bg.mp4.asset.json";
 import { POSTS } from "./blog";
-import { Users, MessageCircle, Video, BookOpen, GraduationCap, ArrowRight, HelpCircle, Compass, Calendar, ScrollText, Building2, Stethoscope, Bus } from "lucide-react";
+import { Users, MessageCircle, Video, BookOpen, GraduationCap, ArrowRight, HelpCircle, Compass, Calendar, ScrollText, Building2, Stethoscope, Bus, CalendarDays } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,6 +39,7 @@ const PILLARS = [
 ];
 
 function Home() {
+  const countdown = useHajjCountdown();
   const featured = POSTS[0];
   const rest = POSTS.slice(1, 5);
 
@@ -69,6 +71,19 @@ function Home() {
                 <Link to="/the-hajj" className="btn-gold">Begin the Journey <ArrowRight size={16} /></Link>
                 <Link to="/hajj-rituals" className="btn-gold-outline !text-cream !border-cream/60 hover:!bg-cream hover:!text-ink">Explore Rituals</Link>
               </div>
+              {countdown && (
+                <div className="mt-8 inline-flex items-center gap-4 bg-cream/10 backdrop-blur-sm border border-gold/40 rounded-md px-5 py-3">
+                  <CalendarDays className="text-gold" size={28} />
+                  <div className="leading-tight">
+                    <div className="font-display text-3xl text-gold font-bold">
+                      {countdown.days === 0 ? "Today" : `${countdown.days} days`}
+                    </div>
+                    <div className="text-cream/80 text-xs uppercase tracking-[0.25em]">
+                      {countdown.days === 0 ? "8 Dhul Hijjah" : `until Hajj · ${countdown.date}`}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </FadeUp>
 
@@ -187,20 +202,22 @@ function Home() {
       </section>
 
       {/* ============ TIMELINE ============ */}
-      <section className="geo-pattern text-cream py-20">
-        <FadeUp className="text-center mb-14 px-5">
+      <section className="bg-off py-20 relative overflow-hidden">
+        <Star8 className="absolute top-10 left-10 text-gold/15" size={120} />
+        <Star8 className="absolute bottom-10 right-10 text-gold/15" size={120} />
+        <FadeUp className="text-center mb-14 px-5 relative">
           <div className="text-gold uppercase text-xs tracking-[0.4em]">5 Days · One Lifetime</div>
-          <h2 className="font-display text-5xl text-gold mt-2">The Hajj Journey</h2>
+          <h2 className="font-display text-5xl text-ink mt-2">The Hajj Journey</h2>
           <Divider2 />
         </FadeUp>
-        <div className="mx-auto max-w-6xl px-5">
+        <div className="mx-auto max-w-6xl px-5 relative">
           <div className="relative grid grid-cols-2 md:grid-cols-5 gap-6">
-            <div className="hidden md:block absolute top-7 left-[10%] right-[10%] h-px bg-gold/40" />
+            <div className="hidden md:block absolute top-7 left-[10%] right-[10%] h-px bg-gold/50" />
             {["Ihram","Mina","Arafat","Stoning","Farewell Tawaf"].map((t,i) => (
               <FadeUp key={t} delay={i*100} className="relative text-center">
-                <div className="mx-auto w-14 h-14 rounded-full bg-gold text-ink font-bold flex items-center justify-center font-display text-xl border-4 border-ink relative z-10">{i+1}</div>
-                <h4 className="font-display text-xl mt-3 text-gold">Day {i+1}</h4>
-                <p className="text-cream/85 text-sm">{t}</p>
+                <div className="mx-auto w-14 h-14 rounded-full bg-gold text-ink font-bold flex items-center justify-center font-display text-xl border-4 border-cream shadow-md relative z-10">{i+1}</div>
+                <h4 className="font-display text-xl mt-3 text-ink">Day {i+1}</h4>
+                <p className="text-deep text-sm">{t}</p>
               </FadeUp>
             ))}
           </div>
@@ -252,13 +269,12 @@ function Home() {
       </section>
 
       {/* ============ TRAVELLER TOOLS — clean two-column ============ */}
-      <section className="bg-ink text-cream py-20 relative">
-        <div className="absolute top-0 left-0 right-0 text-gold/40 h-5"><OrnamentBand className="w-full h-full" /></div>
+      <section className="paper-bg py-20 relative">
         <FadeUp className="text-center mb-12 px-5">
           <div className="text-gold uppercase text-xs tracking-[0.4em]">For the Pilgrim</div>
-          <h2 className="font-display text-5xl text-gold mt-2">Traveller Tools</h2>
+          <h2 className="font-display text-5xl text-ink mt-2">Traveller Tools</h2>
           <Divider2 />
-          <p className="text-cream/70 max-w-xl mx-auto">Live information to help you plan — built clean and lightweight, no third-party clutter.</p>
+          <p className="text-deep/80 max-w-xl mx-auto">Live information to help you plan — built clean and lightweight, no third-party clutter.</p>
         </FadeUp>
         <div className="mx-auto max-w-5xl px-5 grid md:grid-cols-2 gap-8">
           <FadeUp><WeatherCard /></FadeUp>
@@ -271,10 +287,10 @@ function Home() {
             { Icon: Stethoscope, title: "Medical Facilities", desc: "Hospitals and clinics serving pilgrims in the Haramain." },
             { Icon: Bus, title: "Holy Sites Transit", desc: "Trains and buses between Makkah, Mina, Arafat and Madinah." },
           ].map(c => (
-            <div key={c.title} className="bg-[#231809]/80 border border-gold/20 p-6 rounded">
+            <div key={c.title} className="bg-cream border border-gold/40 p-6 rounded shadow-sm hover:shadow-md transition-shadow">
               <c.Icon size={28} className="text-gold" />
-              <h3 className="font-display text-2xl mt-3 text-gold">{c.title}</h3>
-              <p className="text-cream/80 mt-2 text-sm">{c.desc}</p>
+              <h3 className="font-display text-2xl mt-3 text-ink">{c.title}</h3>
+              <p className="text-deep/85 mt-2 text-sm">{c.desc}</p>
               <button className="btn-gold-outline mt-4">View Directory</button>
             </div>
           ))}

@@ -71,6 +71,19 @@ function Home() {
                 <Link to="/the-hajj" className="btn-gold">Begin the Journey <ArrowRight size={16} /></Link>
                 <Link to="/hajj-rituals" className="btn-gold-outline !text-cream !border-cream/60 hover:!bg-cream hover:!text-ink">Explore Rituals</Link>
               </div>
+              {countdown && (
+                <div className="mt-8 inline-flex items-center gap-4 bg-cream/10 backdrop-blur-sm border border-gold/40 rounded-md px-5 py-3">
+                  <CalendarDays className="text-gold" size={28} />
+                  <div className="leading-tight">
+                    <div className="font-display text-3xl text-gold font-bold">
+                      {countdown.days === 0 ? "Today" : `${countdown.days} days`}
+                    </div>
+                    <div className="text-cream/80 text-xs uppercase tracking-[0.25em]">
+                      {countdown.days === 0 ? "8 Dhul Hijjah" : `until Hajj · ${countdown.date}`}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </FadeUp>
 

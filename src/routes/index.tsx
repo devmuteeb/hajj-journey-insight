@@ -39,6 +39,7 @@ const PILLARS = [
 ];
 
 function Home() {
+  const countdown = useHajjCountdown();
   const featured = POSTS[0];
   const rest = POSTS.slice(1, 5);
 

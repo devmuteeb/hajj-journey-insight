@@ -9,50 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TheHajjRouteImport } from './routes/the-hajj'
-import { Route as TheChartRouteImport } from './routes/the-chart'
-import { Route as HajjRitualsRouteImport } from './routes/hajj-rituals'
-import { Route as HajjOptionsRouteImport } from './routes/hajj-options'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as ChartHistoryRouteImport } from './routes/chart-history'
-import { Route as BlogRouteImport } from './routes/blog'
-import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as ChartHistoryRouteImport } from './routes/chart-history'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as HajjOptionsRouteImport } from './routes/hajj-options'
+import { Route as HajjRitualsRouteImport } from './routes/hajj-rituals'
+import { Route as TheChartRouteImport } from './routes/the-chart'
+import { Route as TheHajjRouteImport } from './routes/the-hajj'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
-const TheHajjRoute = TheHajjRouteImport.update({
-  id: '/the-hajj',
-  path: '/the-hajj',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TheChartRoute = TheChartRouteImport.update({
-  id: '/the-chart',
-  path: '/the-chart',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HajjRitualsRoute = HajjRitualsRouteImport.update({
-  id: '/hajj-rituals',
-  path: '/hajj-rituals',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HajjOptionsRoute = HajjOptionsRouteImport.update({
-  id: '/hajj-options',
-  path: '/hajj-options',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChartHistoryRoute = ChartHistoryRouteImport.update({
-  id: '/chart-history',
-  path: '/chart-history',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminRoute = AdminRouteImport.update({
@@ -60,9 +30,39 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChartHistoryRoute = ChartHistoryRouteImport.update({
+  id: '/chart-history',
+  path: '/chart-history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HajjOptionsRoute = HajjOptionsRouteImport.update({
+  id: '/hajj-options',
+  path: '/hajj-options',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HajjRitualsRoute = HajjRitualsRouteImport.update({
+  id: '/hajj-rituals',
+  path: '/hajj-rituals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TheChartRoute = TheChartRouteImport.update({
+  id: '/the-chart',
+  path: '/the-chart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TheHajjRoute = TheHajjRouteImport.update({
+  id: '/the-hajj',
+  path: '/the-hajj',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
@@ -161,53 +161,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/the-hajj': {
-      id: '/the-hajj'
-      path: '/the-hajj'
-      fullPath: '/the-hajj'
-      preLoaderRoute: typeof TheHajjRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/the-chart': {
-      id: '/the-chart'
-      path: '/the-chart'
-      fullPath: '/the-chart'
-      preLoaderRoute: typeof TheChartRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/hajj-rituals': {
-      id: '/hajj-rituals'
-      path: '/hajj-rituals'
-      fullPath: '/hajj-rituals'
-      preLoaderRoute: typeof HajjRitualsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/hajj-options': {
-      id: '/hajj-options'
-      path: '/hajj-options'
-      fullPath: '/hajj-options'
-      preLoaderRoute: typeof HajjOptionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/chart-history': {
-      id: '/chart-history'
-      path: '/chart-history'
-      fullPath: '/chart-history'
-      preLoaderRoute: typeof ChartHistoryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin': {
@@ -217,11 +175,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chart-history': {
+      id: '/chart-history'
+      path: '/chart-history'
+      fullPath: '/chart-history'
+      preLoaderRoute: typeof ChartHistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hajj-options': {
+      id: '/hajj-options'
+      path: '/hajj-options'
+      fullPath: '/hajj-options'
+      preLoaderRoute: typeof HajjOptionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hajj-rituals': {
+      id: '/hajj-rituals'
+      path: '/hajj-rituals'
+      fullPath: '/hajj-rituals'
+      preLoaderRoute: typeof HajjRitualsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/the-chart': {
+      id: '/the-chart'
+      path: '/the-chart'
+      fullPath: '/the-chart'
+      preLoaderRoute: typeof TheChartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/the-hajj': {
+      id: '/the-hajj'
+      path: '/the-hajj'
+      fullPath: '/the-hajj'
+      preLoaderRoute: typeof TheHajjRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/$slug': {
@@ -258,3 +258,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

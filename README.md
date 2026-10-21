@@ -324,48 +324,17 @@ createServer(async (req, res) => {
   }
 }).listen(port, '0.0.0.0', () => console.log(`Server listening on port ${port}`));
 
-Dockerfile:
+## Docker
 
-dockerfile
+```sh
+docker build --build-arg VITE_ADMIN_PASSWORD=yourpass -t hajj-illuminated .
+docker run -p 3000:3000 hajj-illuminated
+```
 
-FROM oven/bun:1 AS build
-WORKDIR /app
-COPY package.json bun.lock* ./
-RUN bun install --frozen-lockfile
-COPY . .
-RUN LOVABLE_ENVIRONMENT=production bun run build
-
-FROM node:22-alpine
-WORKDIR /app
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/server-entry.js ./server-entry.js
-EXPOSE 3000
-CMD ["node", "server-entry.js"]
-
-ENV:
-
-VITE_API_URL=your-api-url
-VITE_ADMIN_PASSWORD=your-password
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://hajj-journey-insight.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/f228ccde-5360-4482-b72a-205ae81ae090).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+`VITE_*` vars are baked in at build time, so set them as build args.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+npm i && npm run dev
 ```
